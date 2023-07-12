@@ -40,6 +40,8 @@ import Skeleton from 'primevue/skeleton';
 import 'primevue/resources/primevue.min.css' //core css
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
+import './assets/base.scss'
+import('primevue/resources/themes/lara-light-blue/theme.css')
 import type { App } from 'vue'
 
 export const primevueConfig = (app: App) => {
