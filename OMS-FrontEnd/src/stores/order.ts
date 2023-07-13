@@ -7,11 +7,12 @@ export const useOrdersStore = defineStore("orders", () => {
   const toast = useToast();
   const isLoading = ref(false);
   const orders = ref([] as IOrder[]);
-
+  const orderRow = ref([]);
+  const showUpsertSendPDFModal = ref(false);
   const showError = (error: any) => {
     let message = "An error occurred";
     if (error.response) {
-      message = error.response.data.error || message;
+      message = error.response.data.detail || message;
     } else if (error.message) {
       message = error.message;
     }
@@ -45,9 +46,39 @@ export const useOrdersStore = defineStore("orders", () => {
     }
   }
 
+  async function getOrderRow(orderId: string) {
+    try {
+      isLoading.value = true;
+      const { data } = await httpClient.get(`api/order-rows/${orderId}/`);
+      orderRow.value = data;
+      console.log(data);
+    } catch (error) {
+      showError(error);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  async function sendEmail(email: string, orderId: string) {
+    try {
+      const { data } = await httpClient.post(`api/send-order`, {
+        email: email,
+        orderId: orderId
+      });
+
+      showSuccess(`Order info sent to: ${email}`);
+    } catch (error) {
+      showError(error);
+    }
+  }
+
   return {
     isLoading,
     orders,
-    getData
+    orderRow,
+    showUpsertSendPDFModal,
+    getData,
+    getOrderRow,
+    sendEmail,
   };
 });
