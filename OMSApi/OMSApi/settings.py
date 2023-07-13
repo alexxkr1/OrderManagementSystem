@@ -27,6 +27,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Host for sending e-mail.
+EMAIL_HOST = 'smtp.gmail.com'
+
+# Port for sending e-mail.
+EMAIL_PORT = 587
+
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = 'attendrmail@gmail.com'
+EMAIL_HOST_PASSWORD = 'vcukzfpbajibgfrn'
+EMAIL_USE_TLS = True
 
 # Application definition
 
@@ -40,7 +52,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'base',
-    'corsheaders'
+    'corsheaders',
+    'django_seed'
 ]
 
 MIDDLEWARE = [
