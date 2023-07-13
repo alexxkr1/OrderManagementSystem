@@ -1,4 +1,8 @@
 <template>
+  <div class="w-full surface-card p-4 shadow-2 border-round mb-5">
+    <h1>Info on all Orders</h1>
+  </div>
+
   <div class="w-full">
     <div>
       <DataTable
@@ -9,7 +13,7 @@
         :value="displayedOrders"
         v-model:filters="filters1"
         responsiveLayout="scroll"
-        :globalFilterFields="['name', 'email']"
+        :globalFilterFields="['customer_code', 'order_number']"
       >
         <template #header>
           <div v-if="orderStore.isLoading" class="flex justify-content-between">
@@ -52,7 +56,7 @@
           </div>
         </template>
         <!-- <Column selectionMode="multiple"></Column> -->
-        <Column field="name" header="id" :sortable="true">
+        <Column field="id" header="id" :sortable="true">
           <template #body="slotProps">
             <div v-if="orderStore.isLoading">
               <Skeleton></Skeleton>
@@ -62,7 +66,7 @@
             </div>
           </template></Column
         >
-        <Column field="email" header="Order Number" :sortable="true">
+        <Column field="orderNumber" header="Order Number" :sortable="true">
           <template #body="slotProps">
             <div v-if="orderStore.isLoading">
               <Skeleton></Skeleton>
@@ -72,7 +76,17 @@
             </div>
           </template>
         </Column>
-        <Column field="joinedAt" header="Customer Name" :sortable="true">
+        <Column field="customerCode" header="Customer Code" :sortable="true">
+          <template #body="slotProps">
+            <div v-if="orderStore.isLoading">
+              <Skeleton></Skeleton>
+            </div>
+            <div v-else>
+              <p>{{ slotProps.data.customer_code }}</p>
+            </div>
+          </template>
+        </Column>
+        <Column field="customerName" header="Customer Name" :sortable="true">
           <template #body="slotProps">
             <div v-if="orderStore.isLoading">
               <Skeleton></Skeleton>
@@ -82,7 +96,7 @@
             </div>
           </template>
         </Column>
-        <Column field="joinedAt" header="Date" :sortable="true">
+        <Column field="date" header="Date" :sortable="true">
           <template #body="slotProps">
             <div v-if="orderStore.isLoading">
               <Skeleton></Skeleton>
@@ -93,7 +107,6 @@
           </template>
         </Column>
         <Column :exportable="false" style="min-width: 8rem">
-          <!-- @vue-expect-error -->
           <template #body="slotProps">
             <div
               class="flex justify-content-center"
@@ -102,12 +115,9 @@
               <Skeleton shape="circle" size="3rem" class="mr-2"></Skeleton>
             </div>
             <div v-else>
-              <Button
-                icon="pi pi-info-circle"
-                outlined
-                rounded
-               
-              />
+              <RouterLink :to="`/${slotProps.data.id}`">
+                <Button icon="pi pi-info-circle" outlined rounded />
+              </RouterLink>
             </div>
           </template>
         </Column>
