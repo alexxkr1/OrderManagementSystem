@@ -23,7 +23,6 @@ import TreeSelect from 'primevue/treeselect'
 import ProgressBar from 'primevue/progressbar'
 import ToastService from 'primevue/toastservice'
 import Password from 'primevue/password'
-import Chart from 'primevue/chart'
 import Inplace from 'primevue/inplace'
 import Avatar from 'primevue/avatar'
 import Breadcrumb from 'primevue/breadcrumb'
@@ -36,6 +35,7 @@ import ColorPicker from 'primevue/colorpicker'
 import Textarea from 'primevue/textarea';
 import Chips from 'primevue/chips';
 import Skeleton from 'primevue/skeleton';
+import DataView from 'primevue/dataview';
 
 import 'primevue/resources/primevue.min.css' //core css
 import 'primeicons/primeicons.css'
@@ -80,7 +80,7 @@ export const primevueConfig = (app: App) => {
   app.component('Textarea', Textarea)
   app.component('Chips', Chips)
   app.component('Skeleton', Skeleton)
-
+  app.component('DataView', DataView)
   app.use(ToastService)
   app.use(PrimeVue)
 }
