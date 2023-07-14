@@ -30,17 +30,16 @@ def addOrder(request):
 
 @api_view(['GET'])
 def getOrderRowData(request, order_id):
-    order_rows = OrderRow.objects.filter(order__id=order_id)  # Filter order rows based on order ID
+    order_rows = OrderRow.objects.filter(order__id=order_id)
     serializer = OrderRowSerializer(order_rows, many=True)
     return Response(serializer.data)
 
 @api_view(['POST'])
 def sendEmail(request):
-    # file_name , status = save_pdf()
-    email = request.data.get('email')  # Assuming the email is passed in the request body
-    orderId = request.data.get('orderId')  # Assuming the email is passed in the request body
+    email = request.data.get('email')
+    orderId = request.data.get('orderId')
 
-    order_rows = OrderRow.objects.filter(order__id=orderId)  # Filter order rows based on order ID
+    order_rows = OrderRow.objects.filter(order__id=orderId)
     order_rows_serializer = OrderRowSerializer(order_rows, many=True)
 
     orders = Order.objects.filter(id=orderId)

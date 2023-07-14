@@ -38,7 +38,6 @@ export const useOrdersStore = defineStore("orders", () => {
       isLoading.value = true;
       const { data } = await httpClient.get(`api/`);
       orders.value = data;
-      console.log(data);
     } catch (error) {
       showError(error);
     } finally {
@@ -51,7 +50,6 @@ export const useOrdersStore = defineStore("orders", () => {
       isLoading.value = true;
       const { data } = await httpClient.get(`api/order-rows/${orderId}/`);
       orderRow.value = data;
-      console.log(data);
     } catch (error) {
       showError(error);
     } finally {

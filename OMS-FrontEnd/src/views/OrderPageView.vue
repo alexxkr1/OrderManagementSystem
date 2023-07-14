@@ -75,7 +75,6 @@ const setCurrentInvoice = (invoice: any) => {
 
 
 onMounted(async () => {
-  console.log(orderStore.showUpsertSendPDFModal)
   await orderStore.getOrderRow(orderId);
 });
 </script>
