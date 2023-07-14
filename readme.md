@@ -39,7 +39,7 @@ The Vue frontend should now be running at [http://localhost:5173](http://localho
 - python manage.py runserver
 
 
-The Django backend should now be running at [http://localhost:8000](http://localhost:8000).
+The Django backend should now be running at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 Remember to keep the frontend and backend servers running for the full functionality of the application.
 
