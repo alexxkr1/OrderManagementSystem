@@ -35,6 +35,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 # Port for sending e-mail.
 EMAIL_PORT = 587
 
+# THESE CREDENTIALS ARE FOR TESTING PURPOSES
+
 # Optional SMTP authentication information for EMAIL_HOST.
 EMAIL_HOST_USER = 'attendrmail@gmail.com'
 EMAIL_HOST_PASSWORD = 'vcukzfpbajibgfrn'
