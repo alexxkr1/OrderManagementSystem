@@ -2,12 +2,12 @@ import { defineStore } from "pinia";
 import { httpClient } from "../axios";
 import { useToast } from "primevue/usetoast";
 import { ref } from "vue";
-import type { IOrder } from "../types/interfaces/order";
+import type { IOrder, IOrderRow } from "../types/interfaces/order";
 export const useOrdersStore = defineStore("orders", () => {
   const toast = useToast();
   const isLoading = ref(false);
   const orders = ref([] as IOrder[]);
-  const orderRow = ref([]);
+  const orderRow = ref([] as IOrderRow[]);
   const showUpsertSendPDFModal = ref(false);
   const showError = (error: any) => {
     let message = "An error occurred";
