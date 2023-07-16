@@ -4,9 +4,9 @@ This project is a monorepo consisting of a Vue frontend and a Django backend.
 
 ## Frontend Setup
 
-1. Navigate to the `OMS-FrontEnd` folder:
+1. Navigate to the `frontend` folder:
 
-- cd OMS-FrontEnd
+- cd frontend
 
 2. Install the required dependencies:
 
@@ -20,22 +20,23 @@ The Vue frontend should now be running at [http://localhost:5173](http://localho
 
 ## Backend Setup
 
-1. Open a new terminal and navigate to the `OMSApi` folder in the project root directory.
+1. Open a new terminal and navigate to the `api` folder in the project root directory.
 
 2. Create a virtual environment (recommended):
 
-- python3 -m venv omsapienv
+- python3 -m venv apienv
 
 3. Activate the virtual environment:
 
 - For Unix/Linux/macOS:
+
   ```
-  source omsapienv/bin/activate
+  source apienv/bin/activate
   ```
 
 - For Windows:
   ```
-  omsapienv\Scripts\activate
+  apienv\Scripts\activate
   ```
 
 4. Install the required Python packages:
@@ -45,7 +46,6 @@ The Vue frontend should now be running at [http://localhost:5173](http://localho
 5. Start the Django development server:
 
 - python manage.py runserver
-
 
 The Django backend should now be running at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
