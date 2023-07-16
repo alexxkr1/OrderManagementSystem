@@ -55,17 +55,6 @@
             </div>
           </div>
         </template>
-        <!-- <Column selectionMode="multiple"></Column> -->
-        <Column field="id" header="id" :sortable="true">
-          <template #body="slotProps">
-            <div v-if="orderStore.isLoading">
-              <Skeleton></Skeleton>
-            </div>
-            <div v-else>
-              <p>{{ slotProps.data.id }}</p>
-            </div>
-          </template></Column
-        >
         <Column field="orderNumber" header="Order Number" :sortable="true">
           <template #body="slotProps">
             <div v-if="orderStore.isLoading">
