@@ -25,20 +25,24 @@
           ><i class="pi pi-envelope z-1"></i>
           <InputText class="w-full" v-model="state.email" placeholder="Email" />
         </span>
-        
+
         <span v-if="v$.email.$error && submitted">
           <span
             id="email-error"
             v-for="(error, index) of v$.email.$errors"
             :key="index"
           >
-            <small class="p-error">{{ error.$message.replace('Value', 'Email') }}</small>
+            <small class="p-error">{{
+              error.$message.replace("Value", "Email")
+            }}</small>
           </span>
         </span>
         <small
-          v-else-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response"
+          v-else-if="
+            (v$.email.$invalid && submitted) || v$.email.$pending.$response
+          "
           class="p-error"
-          >{{ v$.email.required.$message.replace('Value', 'Role') }}</small
+          >{{ v$.email.required.$message.replace("Value", "Role") }}</small
         >
       </div>
       <pre>{{ props.selectedInvoice }}</pre>
@@ -85,7 +89,7 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email as emailRule } from "@vuelidate/validators";
 
 const orderStore = useOrdersStore();
-const submitted = ref(false)
+const submitted = ref(false);
 
 const state = reactive({
   email: "",
@@ -104,19 +108,20 @@ const emit = defineEmits<{
 const props = defineProps<{
   selectedInvoice?: any;
   orderId: string;
+  orderNumber: string;
 }>();
 
 const close = () => {
   emit("close");
-  submitted.value = false
+  submitted.value = false;
 };
 
 const handleSubmit = async () => {
   const result = await v$.value.$validate();
-  submitted.value = true
+  submitted.value = true;
 
   if (result) {
-    await orderStore.sendEmail(state.email, props.orderId);
+    await orderStore.sendEmail(state.email, props.orderId, props.orderNumber);
   }
 };
 </script>

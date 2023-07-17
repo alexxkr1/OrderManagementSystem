@@ -86,7 +86,7 @@
               <Skeleton shape="circle" size="3rem" class="mr-2"></Skeleton>
             </div>
             <div v-else>
-              <RouterLink :to="`/${slotProps.data.id}`">
+              <RouterLink :to="`/${slotProps.data.id}?orderNumber=${slotProps.data.order_number}`">
                 <Button icon="pi pi-info-circle" outlined rounded />
               </RouterLink>
             </div>

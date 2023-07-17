@@ -10,7 +10,7 @@ from .serializers import OrderSerializer, OrderRowSerializer
 from base.models import Order, OrderRow
 
 
-def send_delivery_email(email, orderId):
+def send_delivery_email(email, orderId, order_number):
     order_rows = OrderRow.objects.filter(order__id=orderId)
     order_rows_serializer = OrderRowSerializer(order_rows, many=True)
 
@@ -25,7 +25,7 @@ def send_delivery_email(email, orderId):
     buffer = BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)
 
-    barcode_value = orderId
+    barcode_value = order_number
     barcode_image = BytesIO()
     Code128(barcode_value, writer=ImageWriter()).write(barcode_image)
     barcode_image.seek(0)

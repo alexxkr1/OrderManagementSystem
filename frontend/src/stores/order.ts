@@ -57,11 +57,12 @@ export const useOrdersStore = defineStore("orders", () => {
     }
   }
 
-  async function sendEmail(email: string, orderId: string) {
+  async function sendEmail(email: string, orderId: string, orderNumber: string) {
     try {
       const { data } = await httpClient.post(`api/send-order`, {
         email: email,
-        orderId: orderId
+        orderId: orderId,
+        orderNumber: orderNumber
       });
 
       showSuccess(`Order info sent to: ${email}`);

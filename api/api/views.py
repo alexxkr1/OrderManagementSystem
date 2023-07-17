@@ -23,9 +23,10 @@ def getOrderRowData(request, order_id):
 def sendEmail(request):
     email = request.data.get("email")
     orderId = request.data.get("orderId")
+    order_number = request.data.get("orderNumber")
 
     if email:
-        email_response = send_delivery_email(email, orderId)
+        email_response = send_delivery_email(email, orderId, order_number)
 
         return Response(email_response, status=status.HTTP_200_OK)
     else:

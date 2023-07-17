@@ -49,7 +49,7 @@
       </div>
     </template>
   </DataView>
-  <UpsertSendPDFModal :orderId="orderId" :selectedInvoice="selectedInvoice" @close="
+  <UpsertSendPDFModal :orderNumber="orderNumber" :orderId="orderId" :selectedInvoice="selectedInvoice" @close="
         orderStore.showUpsertSendPDFModal = false;
       "/>
 </template>
@@ -63,6 +63,7 @@ const orderStore = useOrdersStore();
 
 const route = useRoute();
 const orderId = route.params.id as string;
+const orderNumber = route.query.orderNumber as string
 const selectedInvoice = ref(null)
 const setCurrentInvoice = (invoice: any) => {
   selectedInvoice.value = invoice
@@ -70,6 +71,7 @@ const setCurrentInvoice = (invoice: any) => {
 
 
 onMounted(async () => {
+  console.log(orderNumber)
   await orderStore.getOrderRow(orderId);
 });
 </script>
