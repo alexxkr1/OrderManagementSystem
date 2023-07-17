@@ -24,11 +24,6 @@
               <div class="text-2xl font-bold text-900">
                 {{ slotProps.data.product_name }}
               </div>
-              <Rating
-                :modelValue="slotProps.data.rating"
-                readonly
-                :cancel="false"
-              ></Rating>
               <div class="flex align-items-center gap-3">
                 <span class="flex align-items-center gap-2">
                   <i class="pi pi-tag"></i>
