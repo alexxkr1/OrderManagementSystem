@@ -25,8 +25,8 @@ def sendEmail(request):
     orderId = request.data.get("orderId")
 
     if email:
-        email_response = send_delivery_email(email, orderId, status=status.HTTP_200_OK)
+        email_response = send_delivery_email(email, orderId)
 
-        return Response(email_response)
+        return Response(email_response, status=status.HTTP_200_OK)
     else:
         raise APIException("Email not provided")
