@@ -35,24 +35,6 @@
                 placeholder="Find orders"
               />
             </span>
-            <div>
-              <button
-                class="mr-2 p-button p-component p-button-outlined w-full sm:w-auto flex-order-0 sm:flex-order-1"
-                type="button"
-                aria-label="Add New"
-                @click="exportCSV($event)"
-              >
-                <!----><span
-                  class="pi pi-download p-button-icon p-button-icon-left"
-                ></span
-                ><span class="p-button-label">Download Info</span
-                ><!----><span
-                  class="p-ink"
-                  role="presentation"
-                  aria-hidden="true"
-                ></span>
-              </button>
-            </div>
           </div>
         </template>
         <Column field="orderNumber" header="Order Number" :sortable="true">
@@ -124,11 +106,6 @@ import { FilterMatchMode } from "primevue/api";
 const orderStore = useOrdersStore();
 
 const dt = ref();
-
-//@ts-ignore
-const exportCSV = (event: any) => {
-  dt.value.exportCSV();
-};
 
 const displayedOrders = computed(() => {
   const defaultClients = Array(5).fill(null);
